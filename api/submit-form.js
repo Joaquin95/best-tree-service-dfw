@@ -1,24 +1,29 @@
-import { GoogleSpreadsheet } from 'google-spreadsheet';
-import sgMail from '@sendgrid/mail';
-
+import { GoogleSpreadsheet } from "google-spreadsheet";
+import sgMail from "@sendgrid/mail";
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') return res.status(405).end();
-
-  const { name, email, phone, address, message } = req.body;
-  const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
-
-
-  if (!name || !email || !phone || !address) {
-    return res.status(400).json({ error: 'Missing required fields' });
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).end();
   }
 
-  // append to Google Sheet
- try {
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_ID);
-    await doc.useServiceAccountAuth(
-      JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON)
-    );
+  const { name, email, phone, address, message } = req.body;
+  if (!name || !email || !phone || !address) {
+    return res.status(400).json({ error: "Missing required fields" });
+  }
+
+  // Only one doc instance, using the same env var everywhere:
+  const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_ID);
+
+  try {
+    // Authenticate
+   const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    await doc.loadServiceAccount({
+      client_email: creds.client_email,
+      private_key: creds.private_key.replace(/\\n/g, "\n"),
+    });
+
+    // Append row
     await doc.loadInfo();
     const sheet = doc.sheetsByIndex[0];
     await sheet.addRow({
@@ -30,15 +35,11 @@ export default async function handler(req, res) {
       SubmittedAt: new Date().toISOString(),
     });
 
+    // Send notification email
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-  // send confirmation email
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-await sgMail.send({
-  to: process.env.SENDGRID_OWNER_EMAIL,       // your inbox
-  from: process.env.SENDGRID_FROM_EMAIL,      // a verified sender
-  subject: `Best Tree Service DFW - New Estimate Request J.M. ${name}`, 
-  text: `
-Contact customer New Estimate Request J.M.
+    const textBody = `
+New estimate request received:
 
 Name:    ${name}
 Email:   ${email}
@@ -49,25 +50,32 @@ Message:
 ${message}
 
 Submitted at: ${new Date().toISOString()}
-  `,
-  html: `
-    <h2>New Estimate Request</h2>
-    <ul>
-      <li><strong>Name:</strong> ${name}</li>
-      <li><strong>Email:</strong> ${email}</li>
-      <li><strong>Phone:</strong> ${phone}</li>
-      <li><strong>Address:</strong> ${address}</li>
-    </ul>
-    <p><strong>Message:</strong></p>
-    <blockquote>${message}</blockquote>
-    <p>Submitted at: ${new Date().toISOString()}</p>
-  `,
-});
+    `.trim();
 
+    const htmlBody = `
+      <h1>New Estimate Request</h1>
+      <table cellpadding="5" border="1" style="border-collapse:collapse;">
+        <tr><td><strong>Name</strong></td><td>${name}</td></tr>
+        <tr><td><strong>Email</strong></td><td>${email}</td></tr>
+        <tr><td><strong>Phone</strong></td><td>${phone}</td></tr>
+        <tr><td><strong>Address</strong></td><td>${address}</td></tr>
+      </table>
+      <h2>Message</h2>
+      <p>${message.replace(/\n/g, "<br>")}</p>
+      <p><em>Submitted at: ${new Date().toISOString()}</em></p>
+    `;
+
+    await sgMail.send({
+      to: process.env.SENDGRID_OWNER_EMAIL,
+      from: process.env.SENDGRID_FROM_EMAIL,
+      subject: `Best Tree Service DFW – Estimate Request from ${name}`,
+      text: textBody,
+      html: htmlBody,
+    });
 
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error('Submission error:', error);
-    return res.status(500).json({ error: 'Internal Server Error' });
+    console.error("Submission error:", error);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 }
