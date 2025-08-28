@@ -1,35 +1,34 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import ContactForm from './components/ContactForm'
-import './App.css'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";  
+import Home from "./pages/Home.jsx";
+import Footer from "./components/Footer";
+import Navbar from "./components/Navbar.jsx";
+import "leaflet/dist/leaflet.css";
+import ThankYou from "./pages/ThankYou";
+import Services from "./pages/Services.jsx";
+import Gallery from "./pages/Gallery.jsx";
+import StumpGrinding from "./pages/StumpGrinding.jsx";
+import TreeRemoval from "./pages/TreeRemoval.jsx";
+import TreeTrimming from "./pages/TreeTrimming.jsx";
+import EstimateForm from "./pages/EstimateForm.jsx";
+import ServiceArea from "./pages/ServiceArea.jsx";
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <BrowserRouter>
+     <Navbar />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/estimate" element={<EstimateForm onSuccess={() => {}} />} />
+        <Route path="/service-area" element={<ServiceArea />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/stump-grinding" element={<StumpGrinding />} />
+        <Route path="/tree-removal"   element={<TreeRemoval />} />
+        <Route path="/tree-trimming"  element={<TreeTrimming />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+      </Routes>
+    <Footer />
+    </BrowserRouter>
+  );
 }
-
-export default App
