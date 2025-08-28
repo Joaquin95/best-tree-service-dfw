@@ -16,6 +16,7 @@ const services = [
   "Tree Pruning",
   "Tree Trimming and Thinning",
   "Tree and Brush Clearing",
+  "Fence Installation & Repair",
 ];
 
 export default function Services() {
@@ -55,7 +56,6 @@ export default function Services() {
       <TreeRemoval />
       <TreeTrimming />
       <EstimateForm />
-      <Footer />
     </main>
   );
 }

@@ -20,7 +20,6 @@ export default function Home() {
 
   return (
     <main>
-  
       <section className="hero-section">
         <InlineEstimateForm onSuccess={() => navigate("/thank-you")} />
         <br />
@@ -46,6 +45,8 @@ export default function Home() {
           </ul>
         </strong>
         <section className="featured-service">
+          <h2>Need Tree Removal?</h2>
+          <h2>Need Tree Trimming?</h2>
           <h2>Need a stump gone fast?</h2>
           <p>
             We offer same-day stump grinding across DFW. Clean, safe, and
@@ -145,7 +146,6 @@ export default function Home() {
           </div>
         </section>
       </section>
-      <Footer />
     </main>
   );
 }

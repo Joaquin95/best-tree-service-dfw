@@ -12,6 +12,7 @@ import TreeRemoval from "./pages/TreeRemoval.jsx";
 import TreeTrimming from "./pages/TreeTrimming.jsx";
 import EstimateForm from "./pages/EstimateForm.jsx";
 import ServiceArea from "./pages/ServiceArea.jsx";
+import Fences from "./pages/Fences.jsx";
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="/estimate" element={<EstimateForm onSuccess={() => {}} />} />
         <Route path="/service-area" element={<ServiceArea />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/fences" element={<Fences />} />
         <Route path="/stump-grinding" element={<StumpGrinding />} />
         <Route path="/tree-removal"   element={<TreeRemoval />} />
         <Route path="/tree-trimming"  element={<TreeTrimming />} />

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import ContactBar from "./ContactBar"; 
+import ContactBar from "./ContactBar";
 import "../index.css";
 
 export default function Navbar() {
@@ -22,7 +22,6 @@ export default function Navbar() {
 
   return (
     <header className="navbar-header">
-      
       <nav className="navbar-main">
         <div className="navbar-inner">
           <img
@@ -40,7 +39,7 @@ export default function Navbar() {
               Your Local Experts in Safe, Reliable Tree Service.
             </span>
           </div>
-         
+
           <button
             className="hamburger"
             aria-label="Toggle menu"
@@ -48,16 +47,24 @@ export default function Navbar() {
           >
             {isOpen ? "✖" : "☰"}
           </button>
-
+         <span className="discount-banner">
+               VA & Military Discount: Up to 10% off – details disclosed when estimator arrives.
+         </span>
           <ul className={`nav-list ${isOpen ? "open" : ""}`}>
+            <li>
+              <Link to="/" onClick={() => setIsOpen(false)}>
+                Home
+              </Link>
+            </li>
             <li>
               <Link to="/services" onClick={() => setIsOpen(false)}>
                 Services
               </Link>
             </li>
             <li>
-             <Link to="/service-area"  onClick={() => setIsOpen(false)}>Service Area</Link>
-
+              <Link to="/service-area" onClick={() => setIsOpen(false)}>
+                Service Area
+              </Link>
             </li>
             <li>
               <Link to="/gallery" onClick={() => setIsOpen(false)}>
@@ -65,15 +72,15 @@ export default function Navbar() {
               </Link>
             </li>
             <li>
-              <a href="#contact" onClick={() => setIsOpen(false)}>
-                Contact Us
-              </a>
+              <Link to="/Fences" onClick={() => setIsOpen(false)}>
+                Fences
+              </Link>
             </li>
           </ul>
         </div>
-         <ContactBar handleGAEvent={handleGAEvent} />
-
+        <ContactBar handleGAEvent={handleGAEvent} />
       </nav>
+
     </header>
   );
 }

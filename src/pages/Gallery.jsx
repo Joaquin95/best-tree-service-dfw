@@ -11,11 +11,11 @@ export default function Gallery() {
     <main>
       ;
       <section className="gallery-section">
-        <h2>Gallery</h2>
-        <p>
-          See our team in action — from emergency removals to precision
-          trimming.
-        </p>
+        <h2>Our Work In Action</h2>
+        <h3>
+        Explore how our team delivers safe, efficient, and professional tree services — 
+    from urgent removals to detailed precision trimming.
+        </h3>
         <div className="gallery-grid">
           <div className="gallery-item">
             <h3>Before Tree Removal</h3>
@@ -33,14 +33,22 @@ export default function Gallery() {
           </div>
           <div className="gallery-item">
             {" "}
-            <h3>Our Chipper Truck</h3>
+            <h3>Professional Chipper Truck</h3>
             <img src="/images/tree-cutting.jpg" alt="Chipper Truck" />
           </div>
           <div className="gallery-item">
             {" "}
-            <h3>Stump Grinding Equipment</h3>
+            <h3>Stump Grinding Specialists</h3>
             <img
               src="/images/Tree-trimming-from-ground.jpg"
+              alt="Stump Grinder"
+            />
+          </div>
+          <div className="gallery-item">
+            {" "}
+            <h3>The Team</h3>
+            <img
+              src="/images/"
               alt="Stump Grinder"
             />
           </div>
@@ -48,15 +56,14 @@ export default function Gallery() {
         </div>
 
         <section className="cta-section">
-          <h3>Like what you see?</h3>
-          <p>
-            Get a free estimate from our team today — fast, professional, and no
-            obligation.
-          </p>
+          <h3>Ready to Remove or Trim Your Trees?</h3>
+          <h3>
+           Request your free estimate today. Our team provides fast, reliable, and 
+      professional service with no obligation.
+          </h3>
           <EstimateForm />
         </section>
       </section>
-      <Footer />
     </main>
   );
 }
