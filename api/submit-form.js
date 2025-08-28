@@ -12,20 +12,22 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Missing required fields" });
   }
 
-  // Only one doc instance, using the same env var everywhere:
-  const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_ID);
-
   try {
-    // Authenticate
-   const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
-    await doc.loadServiceAccount({
-      client_email: creds.client_email,
-      private_key: creds.private_key.replace(/\\n/g, "\n"),
+    // Parse service account credentials from env
+    const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+
+    // Authenticate & load the spreadsheet (v5 way)
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_ID, {
+      auth: {
+        client_email: creds.client_email,
+        private_key: creds.private_key.replace(/\\n/g, "\n"),
+      },
     });
 
-    // Append row
     await doc.loadInfo();
     const sheet = doc.sheetsByIndex[0];
+
+    // Append a row
     await sheet.addRow({
       Name: name,
       Email: email,
