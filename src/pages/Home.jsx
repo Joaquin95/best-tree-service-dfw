@@ -3,7 +3,8 @@ import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer";
 import "../index.css";
 import { useNavigate } from "react-router-dom";
-import InlineEstimateForm from "../components/InlineEstimateForm";
+import EstimateForm from "./EstimateForm.jsx";
+// import InlineEstimateForm from "../components/InlineEstimateForm";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ export default function Home() {
   return (
     <main>
       <section className="hero-section">
-        <InlineEstimateForm onSuccess={() => navigate("/thank-you")} />
+        <EstimateForm onSuccess={() => navigate("/thank-you")} />
         <br />
 
         <strong>

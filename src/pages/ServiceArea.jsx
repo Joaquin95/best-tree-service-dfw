@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import InlineEstimateForm from "../components/InlineEstimateForm";
+// import InlineEstimateForm from "../components/InlineEstimateForm";
 
 const serviceAreas = [
   "Dallas",
@@ -67,7 +67,7 @@ export default function ServiceArea() {
       <section className="map-form-section">
         <div className="content-wrapper map-form-container">
           <div className="form-container">
-            <InlineEstimateForm onSuccess={() => navigate("/thank-you")} />
+            <EstimateForm onSuccess={() => navigate("/thank-you")} />
           </div>
 
           {/* Interactive Map Placeholder */}
