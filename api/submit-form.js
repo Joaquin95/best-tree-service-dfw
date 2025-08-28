@@ -1,14 +1,13 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import sgMail from '@sendgrid/mail';
 
-export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return res.status(405).json({ error: 'Method Not Allowed' });
-  }
 
+export default async function handler(req, res) {
+  if (req.method !== 'POST') return res.status(405).end();
 
   const { name, email, phone, address, message } = req.body;
+  const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID);
+
 
   if (!name || !email || !phone || !address) {
     return res.status(400).json({ error: 'Missing required fields' });

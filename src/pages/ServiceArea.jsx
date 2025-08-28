@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
+import EstimateForm from "./EstimateForm";
 // import InlineEstimateForm from "../components/InlineEstimateForm";
 
 const serviceAreas = [
@@ -81,9 +82,6 @@ export default function ServiceArea() {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution="&copy; OpenStreetMap contributors"
               />
-              <Marker position={[32.7767, -96.797]}>
-                <Popup>We’re here—serving your neighborhood!</Popup>
-              </Marker>
             </MapContainer>
           </div>
         </div>
