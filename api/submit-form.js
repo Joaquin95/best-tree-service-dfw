@@ -1,4 +1,6 @@
-import { GoogleSpreadsheet } from "google-spreadsheet";
+import { createRequire } from "module";
+const require = createRequire(import.meta.url);
+const { GoogleSpreadsheet } = require("google-spreadsheet");
 import sgMail from "@sendgrid/mail";
 
 export default async function handler(req, res) {
@@ -13,64 +15,50 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Parse service account credentials from env
-    const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
-
-    // Authenticate & load the spreadsheet (v5 way)
     const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_ID, {
       auth: {
-        client_email: creds.client_email,
-        private_key: creds.private_key.replace(/\\n/g, "\n"),
+        client_email: process.env.GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL,
+        private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY.replace(/\\n/g, "\n"),
       },
     });
 
     await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0];
 
-    // Append a row
+    const sheet = doc.sheetsByIndex[0];
     await sheet.addRow({
       Name: name,
       Email: email,
       Phone: phone,
       Address: address,
-      Message: message,
+      Message: message || "",
       SubmittedAt: new Date().toISOString(),
     });
 
-    // Send notification email
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
     const textBody = `
-New estimate request received:
-
-Name:    ${name}
-Email:   ${email}
-Phone:   ${phone}
-Address: ${address}
-
-Message:
-${message}
-
-Submitted at: ${new Date().toISOString()}
-    `.trim();
+      New estimate request:
+      Name: ${name}
+      Email: ${email}
+      Phone: ${phone}
+      Address: ${address}
+      Message: ${message || "N/A"}
+    `;
 
     const htmlBody = `
-      <h1>New Estimate Request</h1>
-      <table cellpadding="5" border="1" style="border-collapse:collapse;">
-        <tr><td><strong>Name</strong></td><td>${name}</td></tr>
-        <tr><td><strong>Email</strong></td><td>${email}</td></tr>
-        <tr><td><strong>Phone</strong></td><td>${phone}</td></tr>
-        <tr><td><strong>Address</strong></td><td>${address}</td></tr>
-      </table>
-      <h2>Message</h2>
-      <p>${message.replace(/\n/g, "<br>")}</p>
-      <p><em>Submitted at: ${new Date().toISOString()}</em></p>
+      <h2>New Estimate Request</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <p><strong>Phone:</strong> ${phone}</p>
+      <p><strong>Address:</strong> ${address}</p>
+      <p><strong>Message:</strong> ${message || "N/A"}</p>
+      <p><em>Submitted at: ${new Date().toLocaleString()}</em></p>
     `;
 
     await sgMail.send({
       to: process.env.SENDGRID_OWNER_EMAIL,
       from: process.env.SENDGRID_FROM_EMAIL,
-      subject: `Best Tree Service DFW – Estimate Request from ${name}`,
+      subject: `Estimate request from ${name}`,
       text: textBody,
       html: htmlBody,
     });
