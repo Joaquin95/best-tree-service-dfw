@@ -54,7 +54,7 @@ export default function ContactBar({ handleGAEvent }) {
                 }}
               >
                 <img
-                  src="/icons/facebook.svg"
+                  src="/images/icons/facebook.svg"
                   alt="Facebook"
                   width="20"
                   height="20"
