@@ -1,7 +1,6 @@
-import { createRequire } from "module";
-const require = createRequire(import.meta.url);
-const { GoogleSpreadsheet } = require("google-spreadsheet");
-import sgMail from "@sendgrid/mail";
+// api/submit-form.js
+import { google } from "googleapis";
+import sgMail     from "@sendgrid/mail";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -15,57 +14,54 @@ export default async function handler(req, res) {
   }
 
   try {
-    // 1) Construct with just the sheet ID
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEETS_ID);
+    // parse your JSON‐stringified service account from env
+    const creds = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
 
-    // 2) Authenticate using the v5 API
-    await doc.useServiceAccountAuth({
-      client_email: process.env.GOOGLE_SERVICE_ACCOUNT_CLIENT_EMAIL,
-      private_key: process.env.GOOGLE_SERVICE_ACCOUNT_PRIVATE_KEY.replace(/\\n/g, "\n"),
+    // build a JWT client & authorize
+    const jwtClient = new google.auth.JWT({
+      email: creds.client_email,
+      key:   creds.private_key.replace(/\\n/g, "\n"),
+      scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+    });
+    await jwtClient.authorize();
+
+    // append a row to your sheet
+    const sheets = google.sheets({ version: "v4", auth: jwtClient });
+    await sheets.spreadsheets.values.append({
+      spreadsheetId: process.env.GOOGLE_SHEETS_ID,
+      range:         "Sheet1!A:F",        // adjust to your sheet/tab name & columns
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [[
+          name,
+          email,
+          phone,
+          address,
+          message || "",
+          new Date().toISOString(),
+        ]],
+      },
     });
 
-    // 3) Load & append row
-    await doc.loadInfo();
-    const sheet = doc.sheetsByIndex[0];
-    await sheet.addRow({
-      Name:        name,
-      Email:       email,
-      Phone:       phone,
-      Address:     address,
-      Message:     message || "",
-      SubmittedAt: new Date().toISOString(),
-    });
-
-    // 4) Send notification email
+    // send your notification email
     sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-    const textBody = `
-New estimate request:
-Name: ${name}
-Email: ${email}
-Phone: ${phone}
-Address: ${address}
-Message: ${message || "N/A"}
-    `;
-    const htmlBody = `
-<h2>New Estimate Request</h2>
-<p><strong>Name:</strong> ${name}</p>
-<p><strong>Email:</strong> ${email}</p>
-<p><strong>Phone:</strong> ${phone}</p>
-<p><strong>Address:</strong> ${address}</p>
-<p><strong>Message:</strong> ${message || "N/A"}</p>
-<p><em>Submitted at: ${new Date().toLocaleString()}</em></p>
-    `;
     await sgMail.send({
       to:      process.env.SENDGRID_OWNER_EMAIL,
       from:    process.env.SENDGRID_FROM_EMAIL,
       subject: `Estimate request from ${name}`,
-      text:    textBody,
-      html:    htmlBody,
+      text:    `New request from ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nMessage: ${message || "N/A"}`,
+      html:    `<h2>New Estimate Request</h2>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                <p><strong>Message:</strong> ${message || "N/A"}</p>
+                <p><em>Submitted at: ${new Date().toISOString()}</em></p>`,
     });
 
     return res.status(200).json({ success: true });
-  } catch (error) {
-    console.error("Submission error:", error);
+  } catch (err) {
+    console.error("Submission error:", err);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
