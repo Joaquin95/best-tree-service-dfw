@@ -24,9 +24,7 @@ export default function ContactBar({ handleGAEvent }) {
               📧 <strong>Email:</strong>{" "}
               <a
                 href="mailto:Besttreeservicedfw@gmail.com"
-                onClick={() =>
-                  handleGAEvent("email_click", "Email Click")
-                }
+                onClick={() => handleGAEvent("email_click", "Email Click")}
               >
                 Besttreeservicedfw@gmail.com
               </a>
@@ -60,13 +58,13 @@ export default function ContactBar({ handleGAEvent }) {
                   height="20"
                   style={{ verticalAlign: "middle" }}
                 />
-                Visit us on Facebook
+                Connect with Us on Facebook
               </a>
             </p>
             <br />
             <h3>
-              24/7 Service | Dallas / Ft. Worth Metroplex Accepts: Cash,
-              Check, Credit cards, Venmo, Zelle
+              24/7 Service | Dallas / Ft. Worth Metroplex <br/> Flexible Payment
+              Options: Cash, Check, Credit cards, Venmo, Zelle
             </h3>
           </strong>
         </span>

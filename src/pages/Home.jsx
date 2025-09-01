@@ -32,29 +32,30 @@ export default function Home() {
             <strong>
               We are a team of experienced Professionals offering top-notch tree
               services. Whether you need tree trimming, removal, or emergency
-              services, we have you covered. Our team is dedicated to providing
-              the best service possible, ensuring your trees are healthy and
-              your property is safe.
+              services, we have you covered. Committed to excellence, our team
+              is dedicated to providing the best service possible, ensuring your
+              trees are healthy, thrive and your property remains secure.
             </strong>
+
             <br />
-            <li>✅ Fully Licensed & Insured</li>
-            <li>✅ Emergency Tree Removal Available 24/7</li>
+            <li>✅ Fully Licensed and Insured for Your Peace of Mind</li>
+            <li>✅ 24/7 Emergency Tree Removal Services</li>
             <li>
-              ✅ Payment Options: Zelle, Cash, Check, Visa, Mastercard, Amex
+              ✅ Flexible Payment Options: Zelle, Cash, Check, Visa, Mastercard,
+              Amex
             </li>
-            <li>✅ Free Estimates & Transparent Pricing</li>
+            <li>✅ Complimentary Estimates with Transparent Pricing</li>
           </ul>
         </strong>
         <section className="featured-service">
-          <h2>Need Tree Removal?</h2>
-          <h2>Need Tree Trimming?</h2>
-          <h2>Need a stump gone fast?</h2>
+          <h2>Need Expert Tree Removal, Trimming, or Stump Grinding?</h2>
           <p>
-            We offer same-day stump grinding across DFW. Clean, safe, and
-            affordable.
+            We deliver same-day stump grinding and comprehensive tree care
+            services across the DFW region, ensuring safety, cleanliness, and
+            cost-effective solutions tailored to your needs.
           </p>
           <a href="/services#stump-grinding" className="btn-primary">
-            Learn More
+            Explore Our Services & FAQ
           </a>
         </section>
 
@@ -137,12 +138,13 @@ export default function Home() {
                   height="20"
                   style={{ verticalAlign: "middle" }}
                 />
-                Visit us on Facebook
+                Connect with Us on Facebook
               </a>
             </p>
 
             <p>
-              <strong>Location:</strong> Dallas, TX
+              <strong>Location:</strong> Serving Dallas-Fort Worth and
+              Surrounding Areas
             </p>
           </div>
         </section>

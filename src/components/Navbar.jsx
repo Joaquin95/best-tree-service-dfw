@@ -33,10 +33,10 @@ export default function Navbar() {
           <div className="nav-heading">
             <h1 className="heading">
               Best Tree Service DFW <br />
-              Residential & Commercial Tree Care Experts
+              Premier Residential & Commercial Tree Care Experts
             </h1>
             <span className="slogan">
-              Your Local Experts in Safe, Reliable Tree Service.
+              Your Trusted Local Experts in Safe and Dependable Tree Service.
             </span>
           </div>
 
