@@ -4,7 +4,7 @@ import Home from "./pages/Home.jsx";
 import Footer from "./components/Footer";
 import Navbar from "./components/Navbar.jsx";
 import "leaflet/dist/leaflet.css";
-import ThankYou from "./pages/ThankYou";
+import ThankYou from "./pages/ThankYou.jsx";
 import Services from "./pages/Services.jsx";
 import Gallery from "./pages/Gallery.jsx";
 import StumpGrinding from "./pages/StumpGrinding.jsx";
