@@ -35,7 +35,7 @@ export default function Home() {
               services, we have you covered. Committed to excellence, our team
               is dedicated to providing the best service possible, ensuring your
               trees are healthy, thrive and your property remains secure.
-            </strong>
+            </strong> <br />
 
             <br />
             <li>✅ Fully Licensed and Insured for Your Peace of Mind</li>
