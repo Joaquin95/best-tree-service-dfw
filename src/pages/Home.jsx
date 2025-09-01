@@ -47,7 +47,7 @@ export default function Home() {
             <li>✅ Complimentary Estimates with Transparent Pricing</li>
           </ul>
         </strong>
-        {/* <section className="featured-service"> */}
+        <section className="featured-service">
           <h2>Need Expert Tree Removal, Trimming, or Stump Grinding?</h2>
           <p>
             We deliver same-day stump grinding and comprehensive tree care
@@ -148,7 +148,7 @@ export default function Home() {
             </p>
           </div>
         </section>
-
+      </section>
     </main>
   );
 }
