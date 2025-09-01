@@ -1,38 +1,54 @@
 import React from "react";
 
-
 export default function TreeRemoval() {
   return (
     <main>
-
       <section className="contact-section">
-        <h1>Tree Removal Services</h1>
+        <h1>Expert Tree Removal Services</h1>
         <p>
-          Whether it's a hazardous tree, storm damage, or clearing space for a new project — we remove trees safely, efficiently, professionally and affordably.
+          Whether addressing hazardous trees, storm damage, or preparing space
+          for new development, our expert team delivers safe, efficient,
+          professional, and cost-effective tree removal solutions tailored to
+          your needs.
         </p>
-  
-        <h2>Why Choose Us for Tree Removal?</h2>
+
+        <h2>Why Select Us for Tree Removal?</h2>
         <ul>
-          <li>✅ Safe, insured removal with proper equipment</li>
-          <li>✅ Emergency response available 24/7</li>
-          <li>✅ Stump grinding and full cleanup </li>
-          <li>✅ Permit handling and city compliance</li>
-          <li>✅ Haul-away Option</li>
-          <li>✅ We handle all sizes, big or small</li>
-          <li>✅ Free estimates and transparent pricing</li>
+          <li>
+            ✅ Safe and insured removal utilizing state-of-the-art equipment
+          </li>
+          <li>✅ 24/7 emergency response services for urgent situations</li>
+          <li>✅ Comprehensive stump grinding and thorough site cleanup</li>
+          <li>
+            ✅ Expert handling of permits and compliance with local regulations
+          </li>
+          <li>✅ Optional debris haul-away for a pristine property</li>
+          <li>✅ Expertise with trees of all sizes, from small to large</li>
+          <li>
+            ✅ Complimentary estimates with transparent, competitive pricing
+          </li>
         </ul>
-   
+
         <h2>Frequently Asked Questions</h2>
-        <h3>How much does tree removal cost?</h3>
-        <p>Pricing depends on tree size, location, and complexity of the surroundings.</p>
+        <h3>What factors determine the cost of tree removal?</h3>
+        <p>
+          {" "}
+          Pricing is influenced by tree size, location, and the complexity of
+          the surrounding environment. Contact us for a personalized quote.
+        </p>
 
-        <h3>Do you handle permits?</h3>
-        <p>Yes — we’ll guide you through any city requirements and handle the paperwork if needed.</p>
+        <h3>Do you manage permit requirements?</h3>
+        <p>
+          Yes, we provide guidance on city regulations and handle permit
+          applications on your behalf when necessary.
+        </p>
 
-        <h3>Can you remove trees near power lines?</h3>
-        <p>Absolutely. We work with utility companies and follow strict safety protocols.</p>
+        <h3>Are you equipped to remove trees near power lines?</h3>
+        <p>
+          Yes, we collaborate with utility companies and adhere to rigorous
+          safety standards to manage tree removal near power lines effectively.
+        </p>
       </section>
-
     </main>
   );
 }

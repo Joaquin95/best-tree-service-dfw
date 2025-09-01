@@ -52,9 +52,9 @@ export default function Services() {
           </div>
         ))}
       </section>
-      <StumpGrinding />
       <TreeRemoval />
       <TreeTrimming />
+      <StumpGrinding />
       <EstimateForm />
     </main>
   );
