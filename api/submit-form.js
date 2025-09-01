@@ -29,7 +29,7 @@ export default async function handler(req, res) {
     const sheets = google.sheets({ version: "v4", auth: jwtClient });
     await sheets.spreadsheets.values.append({
       spreadsheetId: process.env.GOOGLE_SHEETS_ID,
-      range:         "Sheet1!A:F",        // adjust to your sheet/tab name & columns
+      range:         "Sheet1!A:F",      
       valueInputOption: "RAW",
       requestBody: {
         values: [[
@@ -48,7 +48,7 @@ export default async function handler(req, res) {
     await sgMail.send({
       to:      process.env.SENDGRID_OWNER_EMAIL,
       from:    process.env.SENDGRID_FROM_EMAIL,
-      subject: `Estimate request from ${name}`,
+      subject: `Best Tree Service DFW - New Estimate request 📩 - J.M`,
       text:    `New request from ${name}\nEmail: ${email}\nPhone: ${phone}\nAddress: ${address}\nMessage: ${message || "N/A"}`,
       html:    `<h2>New Estimate Request</h2>
                 <p><strong>Name:</strong> ${name}</p>
