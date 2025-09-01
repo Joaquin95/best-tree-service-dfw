@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation
+ } from "react-router-dom";
 import React from "react";  
 import Home from "./pages/Home.jsx";
 import Footer from "./components/Footer";
@@ -13,10 +14,28 @@ import TreeTrimming from "./pages/TreeTrimming.jsx";
 import EstimateForm from "./pages/EstimateForm.jsx";
 import ServiceArea from "./pages/ServiceArea.jsx";
 import Fences from "./pages/Fences.jsx";
+import { useEffect } from "react";
+
+function RouteChangeTracker() {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "page_view", {
+        page_path: location.pathname + location.search,
+      });
+    }
+  }, [location]);
+
+  return null;
+}
+
 
 export default function App() {
   return (
     <BrowserRouter>
+      <RouteChangeTracker />
+
      <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
