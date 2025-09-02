@@ -22,7 +22,7 @@ export default function Gallery() {
           <div className="gallery-item">
             {" "}
             <h3>Process</h3>
-            <img src="/images/tree-cutting2.jpg" alt="Cutting Process" />
+            <img src="/images/Tree-Cutting2.jpg" alt="Cutting Process" />
           </div>
           <div className="gallery-item">
             <h3>After Tree Removal</h3>
