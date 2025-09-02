@@ -16,6 +16,7 @@ export default function Gallery() {
         </h3>
         <div className="gallery-grid">
           <div className="gallery-item">
+            {" "}
             <h3>Before Tree Removal</h3>
             <img src="/images/Tree-Cutting.jpg" alt="Before Tree Removal" />
           </div>
