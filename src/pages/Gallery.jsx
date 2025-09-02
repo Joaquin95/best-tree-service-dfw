@@ -20,14 +20,14 @@ export default function Gallery() {
           <div className="gallery-item">
             <h3>Before Tree Removal</h3>
             <img
-              src="/images/Emergency-tree-work.jpg"
+              src="/images/Tree-Cutting.jpg"
               alt="Before Tree Removal"
             />
           </div>
           <div className="gallery-item">
             <h3>After Tree Removal</h3>
             <img
-              src="/images/residential-tree-services.jpg"
+              src="/images/Tree-Cutting3.jpg"
               alt="After Tree Removal"
             />
           </div>
@@ -38,9 +38,9 @@ export default function Gallery() {
           </div>
           <div className="gallery-item">
             {" "}
-            <h3>Stump Grinding Specialists</h3>
+            <h3>Stump Grinding Process</h3>
             <img
-              src="/images/Tree-trimming-from-ground.jpg"
+              src="/images/StumpGrinding.jpg"
               alt="Stump Grinder"
             />
           </div>
