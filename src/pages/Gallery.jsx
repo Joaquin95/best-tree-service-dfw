@@ -15,12 +15,7 @@ export default function Gallery() {
           services — from urgent removals to detailed precision trimming.
         </h3>
         <div className="gallery-grid">
-          {/* <div className="gallery-item">
-            {" "}
-            <h3>Before Tree Removal</h3>
-            <img src="/images/Tree-Cutting.jpg" alt="Before Tree Removal" />
-          </div> */}
-            <div className="gallery-item">
+          <div className="gallery-item">
             {" "}
             <h3>Before Tree Removal</h3>
             <img src="/images/Tree-Cutting.jpg" alt="Before Tree Removal" />
