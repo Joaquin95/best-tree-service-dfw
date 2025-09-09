@@ -15,7 +15,7 @@ export default function ContactBar({ handleGAEvent }) {
                   handleGAEvent("phone_click", "Phone Number Click")
                 }
               >
-                (214) 944-7415 - Hablamos español
+                (214) 944-7415 - Hablamos Español
               </a>
             </p>
             <br />

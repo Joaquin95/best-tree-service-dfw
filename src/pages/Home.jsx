@@ -27,7 +27,7 @@ export default function Home() {
 
         <strong>
           <ul className="trust-list">
-            <h2>Trusted Tree Experts in DFW Since 2021</h2>
+            <h2>Trusted Tree Experts in DFW Since 2015</h2>
 
             <strong>
               We are a team of experienced Professionals offering top-notch tree

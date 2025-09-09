@@ -43,16 +43,18 @@ export default function TreeTrimming() {
           recommendations.
         </p>
 
-        <h3>Do you offer trimming for trees near power lines?</h3>
+        <h3>What payment options do you accept?</h3>
         <p>
-          Yes, we employ stringent safety protocols and collaborate with utility
-          companies to safely trim trees near power lines when required.
+          We offer flexible payment methods, including Zelle, cash, check, Visa,
+          Mastercard, and American Express, to make the process as convenient as
+          possible.
         </p>
 
-        <h3>Could trimming negatively impact my tree?</h3>
+        <h3>Do you clean up debris after the job?</h3>
         <p>
-          No, when performed correctly by our experts, trimming enhances tree
-          health, structure, and longevity, promoting robust growth.
+          Absolutely—we guarantee a thorough cleanup, leaving your property
+          spotless and free of branches, leaves, and wood chips once our work is
+          complete.
         </p>
       </section>
     </main>

@@ -37,10 +37,10 @@ export default function TreeRemoval() {
           the surrounding environment. Contact us for a personalized quote.
         </p>
 
-        <h3>Do you manage permit requirements?</h3>
+        <h3>Are you licensed and bonded?</h3>
         <p>
-          Yes, we provide guidance on city regulations and handle permit
-          applications on your behalf when necessary.
+          We carry a $2 million liability policy and provide each homeowner with
+          a personalized certificate of insurance for their records.
         </p>
 
         <h3>Are you equipped to remove trees near power lines?</h3>

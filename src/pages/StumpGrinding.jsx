@@ -21,7 +21,7 @@ export default function StumpGrinding() {
      
         <h2>Frequently Asked Questions</h2>
         <h3>What is the depth of your stump grinding?</h3>
-        <p> We grind stumps to a depth of 6–12 inches below ground level, adjustable based on your specific requirements.</p>
+        <p> We grind stumps to a depth of 4-6 inches below ground level, adjustable based on your specific requirements.</p>
 
         <h3>Do you remove roots as well?</h3>
         <p> Our standard service includes grinding the stump and surface roots. Comprehensive root removal is available upon request for an additional fee.
