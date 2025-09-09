@@ -49,9 +49,9 @@ export default function Navbar() {
           </button>
           <span className="discount-banner">
             VA & Military Discount: Up to 10% off – details disclosed when
-            estimator arrives.
+            estimator arrives. <br/>
+            hablamos español
           </span>
-          <span className="slogan">Hablamos Espanol.</span>
           <ul className={`nav-list ${isOpen ? "open" : ""}`}>
             <li>
               <Link to="/" onClick={() => setIsOpen(false)}>
