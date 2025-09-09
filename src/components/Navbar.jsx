@@ -47,9 +47,11 @@ export default function Navbar() {
           >
             {isOpen ? "✖" : "☰"}
           </button>
-         <span className="discount-banner">
-               VA & Military Discount: Up to 10% off – details disclosed when estimator arrives.
-         </span>
+          <span className="discount-banner">
+            VA & Military Discount: Up to 10% off – details disclosed when
+            estimator arrives.
+          </span>
+          <span className="slogan">Hablamos Espanol.</span>
           <ul className={`nav-list ${isOpen ? "open" : ""}`}>
             <li>
               <Link to="/" onClick={() => setIsOpen(false)}>
@@ -80,7 +82,6 @@ export default function Navbar() {
         </div>
         <ContactBar handleGAEvent={handleGAEvent} />
       </nav>
-
     </header>
   );
 }

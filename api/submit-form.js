@@ -39,16 +39,7 @@ export default async function handler(req, res) {
       range: "Sheet1!A:F",
       valueInputOption: "RAW",
       requestBody: {
-        values: [
-          [
-            name,
-            email,
-            phone,
-            address,
-            message || "",
-           formattedTime
-          ],
-        ],
+        values: [[name, email, phone, address, message || "", formattedTime]],
       },
     });
 
