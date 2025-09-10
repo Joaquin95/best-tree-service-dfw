@@ -27,16 +27,6 @@
       name="description"
       content="Best Tree Service in Dallas-Fort Worth. Expert tree trimming, removal, and emergency services. Free estimates available."
     />
-    <meta property="og:title" content="Best Tree Service DFW" />
-    <meta
-      property="og:description"
-      content="Professional tree trimming & removal in Dallas-Fort Worth. Call for a free estimate."
-    />
-    <meta
-      property="og:image"
-      content="https://besttreeservicedfw.com/images/Best_Tree_Service.jpg"
-    />
-    <meta property="og:url" content="https://besttreeservicedfw.com" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href="https://besttreeservicedfw.com" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -47,7 +37,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://www.besttreeservicedfw.com/images/logo-tree.png"
+      content="https://www.besttreeservicedfw.com/images/Best_Tree_Service.jpg"
     />
 
     <!-- Optional fallback for older platforms -->
@@ -55,6 +45,7 @@
       rel="image_src"
       href="https://www.besttreeservicedfw.com/images/Best_Tree_Service.jpg"
     />
+    <link rel="canonical" href="https://besttreeservicedfw.com" />
 
     <script
       async
@@ -73,10 +64,33 @@
         page_path: window.location.pathname + window.location.search,
       });
     </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "TreeService",
+        "name": "Best Tree Service DFW",
+        "image": "https://www.besttreeservicedfw.com/images/Best_Tree_Service.jpg",
+        "@id": "https://www.besttreeservicedfw.com",
+        "url": "https://www.besttreeservicedfw.com",
+        "telephone": "+1-214-944-7415",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Dallas-Fort Worth",
+          "addressRegion": "TX",
+          "addressCountry": "US"
+        },
+        "priceRange": "$$",
+        "description": "Licensed & insured arborists in Dallas–Fort Worth offering 24/7 emergency tree removal, trimming, stump grinding & more."
+      }
+    </script>
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <h1>
+        Best Tree Service DFW – Tree Removal & Trimming in Dallas-Fort Worth
+      </h1>
+    </div>
     <!-- Make sure this path is correct for your setup -->
     <script type="module" src="/src/main.jsx"></script>
   </body>
