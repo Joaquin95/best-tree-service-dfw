@@ -36,7 +36,8 @@ export default function Navbar() {
               Premier Residential & Commercial Tree Care Experts
             </h1>
             <span className="slogan">
-              Your Trusted Local Experts in Safe and Dependable Tree Service.
+              Your Trusted Local Experts in Safe and Dependable Tree Service. <br />
+              Fully Licensed & Insured – Satisfaction Guaranteed!
             </span>
           </div>
 
