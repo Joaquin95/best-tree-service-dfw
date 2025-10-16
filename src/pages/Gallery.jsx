@@ -34,11 +34,26 @@ export default function Gallery() {
             <h3>Stump Grinding Process</h3>
             <img src="/images/StumpGrinding.jpg" alt="Stump Grinder" />
           </div>
-          {/* <div className="gallery-item">
+          <div className="gallery-item">
             {" "}
-            <h3>The Team</h3>
-            <img src="/images/" alt="Stump Grinder" />
-          </div> */}
+            <h3>Spotted in Your Neighborhood — Don’t Hesitate to Contact Us!</h3>
+            <img src="/images/Truck-Image.jpeg" alt="Car-IMage" />
+          </div>
+          <div className="gallery-item">
+            {" "}
+            <h3>Tree Cleanup Crew Rolling Out</h3>
+            <img src="/images/Truck-Image2.jpeg" alt="Car-IMage" />
+          </div>
+          <div className="gallery-item">
+            {" "}
+            <h3>Serving Your Neighborhood with Trusted Tree Care — Reach Out Today!</h3>
+            <img src="/images/Car-Image.jpeg" alt="Car-IMage" />
+          </div>
+          <div className="gallery-item">
+            {" "}
+            <h3>Contact us for a FREE estimate</h3>
+            <img src="/images/Car-Image2.jpeg" alt="Car-IMage" />
+          </div>
           {/* Add more items as needed */}
         </div>
 
